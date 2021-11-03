@@ -17,10 +17,12 @@ jobs:
         run: Rscript -e 'install.packages("rmarkdown")'
       - name: "Render it"
         run: Rscript -e "rmarkdown::render('foobar.Rmd')"
-      - name: "Commit pdf"
-        run: |
-          git config user.email "foobar@gmail.com"
-          git config user.name "Mark Andrews"
-          git add foobar.html
-          git commit -m "Add foobar"
-          git push
+      - name: release
+        uses: actions/create-release@v1
+        id: create_release
+        with:
+          draft: false
+          prerelease: false
+          release_name: ${{ steps.version.outputs.version }}
+          tag_name: ${{ github.ref }}
+          body_path: CHANGELOG.md
