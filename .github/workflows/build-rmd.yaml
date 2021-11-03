@@ -23,3 +23,4 @@ jobs:
           git config user.name "Mark Andrews"
           git add foobar.html
           git commit -m "Add foobar"
+          git push
