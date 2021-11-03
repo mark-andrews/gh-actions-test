@@ -15,3 +15,9 @@ jobs:
       - uses: r-lib/actions/setup-pandoc@v1
       - name: "Install rmarkdown"
         run: Rscript -e 'install.packages("rmarkdown")'
+      - name: "Render it"
+        run: Rscript -e "rmarkdown::render('foobar.Rmd')"
+      - name: "Commit pdf"
+        run: |
+          git commit foobar.pdf -m 'Add foobar'
+          git push origin
