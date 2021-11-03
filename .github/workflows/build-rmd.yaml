@@ -19,5 +19,7 @@ jobs:
         run: Rscript -e "rmarkdown::render('foobar.Rmd')"
       - name: "Commit pdf"
         run: |
+          git config user.email "foobar@gmail.com"
+          git config user.name "Mark Andrews"
           git add foobar.html
           git commit -m "Add foobar"
