@@ -19,5 +19,5 @@ jobs:
         run: Rscript -e "rmarkdown::render('foobar.Rmd')"
       - name: "Commit pdf"
         run: |
-          git commit foobar.pdf -m 'Add foobar'
+          git commit foobar.html -m 'Add foobar'
           git push origin

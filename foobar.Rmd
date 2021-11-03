@@ -2,7 +2,7 @@
 title: "foobar"
 author: "Mark Andrews"
 date: "03/11/2021"
-output: pdf_document
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
