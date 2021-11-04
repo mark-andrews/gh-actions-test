@@ -10,30 +10,40 @@ jobs:
     name: "Render Rmd"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: r-lib/actions/setup-r@v1
-      - uses: r-lib/actions/setup-pandoc@v1
-      - name: "Install rmarkdown"
-        run: Rscript -e 'install.packages("rmarkdown")'
-      - name: "Render it"
-        run: Rscript -e "rmarkdown::render('foobar.Rmd')"
-      - name: release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+      - name: Checkout
+        uses: actions/checkout@v2
+      # - uses: r-lib/actions/setup-r@v1
+      # - uses: r-lib/actions/setup-pandoc@v1
+      # - name: "Install rmarkdown"
+      #   run: Rscript -e 'install.packages("rmarkdown")'
+      # - name: "Render it"
+      #   run: Rscript -e "rmarkdown::render('foobar.Rmd')"
+      - name: Build
+        run: echo ${{ github.sha }} > release.txt
+      - name: Test
+        run: cat release.txt
+      - name: Release
+        uses: softprops/action-gh-release@v1
         with:
-          draft: false
-          prerelease: false
-          release_name: "something v2"
-          tag_name: v2
-      - name: 'Upload asset'
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: $${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./foobar.html
-          asset_name: foobar.html
-          asset_content_type: text/html
+          files: release.txt
+      
+      # - name: release
+      #   id: create_release
+      #   uses: actions/create-release@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+      #   with:
+      #     draft: false
+      #     prerelease: false
+      #     release_name: "something v2"
+      #     tag_name: v2
+      # - name: 'Upload asset'
+      #   uses: actions/upload-release-asset@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     upload_url: $${{ steps.create_release.outputs.upload_url }}
+      #     asset_path: ./foobar.html
+      #     asset_name: foobar.html
+      #     asset_content_type: text/html
           
