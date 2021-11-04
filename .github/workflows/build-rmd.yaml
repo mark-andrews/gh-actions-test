@@ -27,7 +27,9 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: release.txt
+          files: |
+            release.txt
+            foobar.html
       
       # - name: release
       #   id: create_release
