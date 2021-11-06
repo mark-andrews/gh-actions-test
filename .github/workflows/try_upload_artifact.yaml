@@ -30,7 +30,7 @@ jobs:
    - name: 'Upload artifact'
      uses: actions/upload-artifact@v2
      with:
-      name: the-build-${{ steps.vars.outputs.date }}-${{ steps.vars.outputs.sha }}
+      name: constable-${{ steps.vars.outputs.date }}.${{ steps.vars.outputs.sha }}
       path: |
        foobar.pdf
        foobar.Rmd
