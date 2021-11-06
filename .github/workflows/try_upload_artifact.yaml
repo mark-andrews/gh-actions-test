@@ -14,11 +14,17 @@ jobs:
      uses: actions/checkout@v2
      with:
       ref: 'master'
-   - name: "Build project"
-     run: |
-      zip --junk-paths my_build_artifact readme.md
+   - uses: r-lib/actions/setup-r@v1
+   - uses: r-lib/actions/setup-pandoc@v1
+   - uses: r-lib/actions/setup-tinytex@v1
+   - name: "Install rmarkdown"
+     run: Rscript -e 'install.packages("rmarkdown")'
+   - name: "Render it"
+     run: Rscript -e "rmarkdown::render('foobar.Rmd')"
    - name: 'Upload artifact'
      uses: actions/upload-artifact@v2
      with:
-      name: the_thing
-      path: my_build_artifact.zip
+      name: artifact
+      path: |
+       foobar.pdf
+       foobar.Rmd
