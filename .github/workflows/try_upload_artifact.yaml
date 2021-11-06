@@ -22,8 +22,9 @@ jobs:
      #run: Rscript -e 'install.packages("rmarkdown")'
    - name: Set outputs
      id: vars
-     run: echo "::set-output name=date::$(date +'%y.%m.%d')"
-     run: echo "::set-output name=sha::$(git rev-parse --short HEAD)"
+     run: |
+      echo "::set-output name=date::$(date +'%y.%m.%d')"
+      echo "::set-output name=sha::$(git rev-parse --short HEAD)"
    - name: "Render it"
      run: Rscript -e "rmarkdown::render('foobar.Rmd')"
    - name: 'Upload artifact'
