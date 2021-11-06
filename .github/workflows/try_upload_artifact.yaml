@@ -24,7 +24,7 @@ jobs:
    - name: 'Upload artifact'
      uses: actions/upload-artifact@v2
      with:
-      name: artifact
+      name: the-build
       path: |
        foobar.pdf
        foobar.Rmd
