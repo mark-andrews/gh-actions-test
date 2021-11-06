@@ -8,6 +8,7 @@ name: "Try upload artifact"
 jobs:
  build:
   name: "Upload artifact"
+  runs-on: ubuntu-latest
   steps:
    - name: "Checkout master"
      uses: actions/checkout@v2
