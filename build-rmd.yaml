@@ -31,24 +31,23 @@ jobs:
           files: |
             release.txt
             foobar.pdf
-      
-      # - name: release
-      #   id: create_release
-      #   uses: actions/create-release@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
-      #   with:
-      #     draft: false
-      #     prerelease: false
-      #     release_name: "something v2"
-      #     tag_name: v2
-      # - name: 'Upload asset'
-      #   uses: actions/upload-release-asset@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     upload_url: $${{ steps.create_release.outputs.upload_url }}
-      #     asset_path: ./foobar.html
-      #     asset_name: foobar.html
-      #     asset_content_type: text/html
-          
+# - name: release
+#   id: create_release
+#   uses: actions/create-release@v1
+#   env:
+#     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+#   with:
+#     draft: false
+#     prerelease: false
+#     release_name: "something v2"
+#     tag_name: v2
+# - name: 'Upload asset'
+#   uses: actions/upload-release-asset@v1
+#   env:
+#     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#   with:
+#     upload_url: $${{ steps.create_release.outputs.upload_url }}
+#     asset_path: ./foobar.html
+#     asset_name: foobar.html
+#     asset_content_type: text/html
+    
