@@ -1,0 +1,23 @@
+on:
+ push:
+  branches: master
+
+name: "Try upload artifact"
+
+
+jobs:
+ build:
+  name: "Upload artifact"
+  steps:
+   - name: "Checkout master"
+     uses: actions/checkout@v2
+     with:
+      ref: 'master'
+   - name: "Build project"
+     run: |
+      zip --junk-paths my_build_artifact readme.md
+   - name: 'Upload artifact'
+     uses: actions/upload-artifact@v2
+     with:
+      name: the_thing
+      path: my_build_artifact.zip
