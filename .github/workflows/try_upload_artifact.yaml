@@ -20,12 +20,15 @@ jobs:
      #   - uses: r-lib/actions/setup-tinytex@v1
      #   - name: "Install rmarkdown"
      #run: Rscript -e 'install.packages("rmarkdown")'
+   - name: Set date
+     id: date
+     run: echo '::set-output name=DATE::foobar'
    - name: "Render it"
      run: Rscript -e "rmarkdown::render('foobar.Rmd')"
    - name: 'Upload artifact'
      uses: actions/upload-artifact@v2
      with:
-      name: the-build
+      name: the-build-${{ steps.date.outputs.DATE}}
       path: |
        foobar.pdf
        foobar.Rmd
